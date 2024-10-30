@@ -11,8 +11,14 @@ const app = express();
 app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // Middleware to parse JSON request bodies
-
+//local mongodb
+/*
 mongoose.connect("mongodb://127.0.0.1:27017/Users", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});*/
+//mongodb atlass
+mongoose.connect("mongodb+srv://yashasrock2000:kgUnaHyvOWeaiCLO@dogbreed.bw0p9.mongodb.net/?retryWrites=true&w=majority&appName=DogBreed", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
