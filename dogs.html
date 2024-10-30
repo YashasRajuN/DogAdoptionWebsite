@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Dog Breeds</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #808080; /* Light background color */
+        }
+        .container {
+            margin-top: 50px; /* Space above the container */
+        }
+        .card {
+            position: relative; /* Positioning for absolute children */
+            overflow: hidden; /* Hide overflow for card hover effect */
+        }
+        .card img {
+            width: 100%; /* Make image responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .info {
+            position: absolute; /* Positioning for info overlay */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: white; /* Text color */
+            display: flex; /* Flexbox for centering */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s; /* Smooth transition */
+        }
+        .card:hover .info {
+            opacity: 1; /* Show info on hover */
+        }
+        h2 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 30px; /* Space below the heading */
+        }
+        .search-bar {
+            margin-bottom: 30px; /* Space below the search bar */
+        }
+           .home-link {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Text color */
+    background-color: #007bff; /* Bootstrap primary color */
+    padding: 15px 25px; /* Add some padding */
+    border-radius: 5px; /* Round the corners */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+.home-link h1 {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center text */
+    font-size: 24px; /* Font size */
+}
+
+.home-link:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+    </style>
+</head>
+<body>
+<div class="nav-list">
+    <a href="index.html" class="home-link">
+    <h1>Go To Home</h1>
+</a>  </div>
+
+<div class="container">
+    <h2>List of Dog Breeds</h2>
+    <div class="search-bar text-center">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search for a breed..." onkeyup="filterBreeds()">
+    </div>
+    <div class="row" id="dogBreedList">
+        <div class="col-md-4 dog-breed" data-breed="affenpinscher">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1610866443075-9188b628003c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QWZmZW5waW5zY2hlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Affenpinscher">
+                <div class="info">
+                    <p>Affenpinscher</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="african">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1644488930886-2ce2d0a6d3e0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8QWZyaWNhbiUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D" alt="African Dog">
+                <div class="info">
+                    <p>African</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="airedale">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1626706058098-dd62bef8bfdc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8QWlyZWRhbGV8ZW58MHx8MHx8fDA%3D" alt="Airedale">
+                <div class="info">
+                    <p>Airedale</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="akita">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1679314540920-e37054878e8e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8QWtpdGElMjBkb2d8ZW58MHx8MHx8fDA%3D" alt="Akita">
+                <div class="info">
+                    <p>Akita</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="appenzeller">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1645604239448-7f71bbd66571?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBwZW56ZWxsZXJ8ZW58MHx8MHx8fDA%3D" alt="Appenzeller">
+                <div class="info">
+                    <p>Appenzeller</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="basenji">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1604319781834-9cb373738599?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8QmFzZW5qaXxlbnwwfHwwfHx8MA%3D%3D" alt="Basenji">
+                <div class="info">
+                    <p>Basenji</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="beagle">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511870381062-cb2443fb0fd9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8QmVhZ2xlfGVufDB8fDB8fHww" alt="Beagle">
+                <div class="info">
+                    <p>Beagle</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="bluetick">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1604236029809-1bbbc6256f61?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Qmx1ZXRpY2t8ZW58MHx8MHx8fDA%3D" alt="Bluetick">
+                <div class="info">
+                    <p>Bluetick</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="borzoi">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1669276191480-ddf41ed90593?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Qm9yem9pfGVufDB8fDB8fHww" alt="Borzoi">
+                <div class="info">
+                    <p>Borzoi</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="bouvier">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1577903932652-7c23769f957f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Qm91dmllcnxlbnwwfHwwfHx8MA%3D%3D alt="Bouvier">
+                <div class="info">
+                    <p>Bouvier</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="boxer">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1442605527737-ed62b867591f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym94ZXIlMjBkb2d8ZW58MHx8MHx8fDA%3D" alt="Boxer">
+                <div class="info">
+                    <p>Boxer</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="brabancon">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1689182357716-3a6b0aa70a10?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGV0aXQlMjBCcmFiYW5jb258ZW58MHx8MHx8fDA%3D alt="Brabancon">
+                <div class="info">
+                    <p>Brabancon</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="briard">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1633327273196-de1e0e9b01e3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QnJpYXJkfGVufDB8fDB8fHww" alt="Briard">
+                <div class="info">
+                    <p>Briard</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="bulldog">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1559475470-c399f648251d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8QnVsbGRvZ3xlbnwwfHwwfHx8MA%3D%3D" alt="Bulldog">
+                <div class="info">
+                    <p>Bulldog</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="bullterrier">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1531860588597-5f93b7296082?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8QnVsbCUyMFRlcnJpZXJ8ZW58MHx8MHx8fDA%3D" alt="Bull Terrier">
+                <div class="info">
+                    <p>Bull Terrier</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="cairn">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2Fpcm4lMjBkb2d8ZW58MHx8MHx8fDA%3D" alt="Cairn">
+                <div class="info">
+                    <p>Cairn</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="chihuahua">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1606501138065-d846f1957c21?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2hpaHVhaHVhfGVufDB8fDB8fHww" alt="Chihuahua">
+                <div class="info">
+                    <p>Chihuahua</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="chow">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1667080799488-3fa8fe75cdd8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Q2hvd3xlbnwwfHwwfHx8MA%3D%3D" alt="Chow">
+                <div class="info">
+                    <p>Chow</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="clumber">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1723708869868-56b26cc69b1c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q2x1bWJlciUyMGRvZ3xlbnwwfHwwfHx8MA%3D%3D alt="Clumber">
+                <div class="info">
+                    <p>Clumber</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="cockapoo">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1678099283707-e16a529555c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Q29ja2Fwb298ZW58MHx8MHx8fDA%3D" alt="Cockapoo">
+                <div class="info">
+                    <p>Cockapoo</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="collie">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1487341290491-1081724e5844?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q29sbGllfGVufDB8fDB8fHww" alt="Collie">
+                <div class="info">
+                    <p>Collie</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="corgi">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1710406095853-170789b14896?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Q29yZ2l8ZW58MHx8MHx8fDA%3D" alt="Corgi">
+                <div class="info">
+                    <p>Corgi</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="dachshund">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1664299531182-c43d0d91e25d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RGFjaHNodW5kJTNDfGVufDB8fDB8fHww" alt="Dachshund">
+                <div class="info">
+                    <p>Dachshund</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="dalmatian">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1532022160153-7735cd049992?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8RGFsbWF0aWFufGVufDB8fDB8fHww" alt="Dalmatian">
+                <div class="info">
+                    <p>Dalmatian</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="dogo">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1621217395054-2f91f1383ab5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RG9nb3xlbnwwfHwwfHx8MA%3D%3D" alt="Dogo">
+                <div class="info">
+                    <p>Dogo</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="doberman">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1649532278562-02164c8fe124?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8RG9iZXJtYW58ZW58MHx8MHx8fDA%3D" alt="Doberman">
+                <div class="info">
+                    <p>Doberman</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="elkhound">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1667376271534-aa08e37b9495?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RWxraG91bmR8ZW58MHx8MHx8fDA%3D" alt="Elkhound">
+                <div class="info">
+                    <p>Elkhound</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="french">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1553998495-15606c6cb6f7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8RnJlbmNoJTIwQnVsbGRvZ3xlbnwwfHwwfHx8MA%3D%3D alt="French Bulldog">
+                <div class="info">
+                    <p>French Bulldog</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="germanshepherd">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1663048824319-b9d74c31a586?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8R2VybWFuJTIwU2hlcGhlcmR8ZW58MHx8MHx8fDA%3D" alt="German Shepherd">
+                <div class="info">
+                    <p>German Shepherd</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="goldenretriever">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1422565096762-bdb997a56a84?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8R29sZGVuJTIwUmV0cmlldmVyfGVufDB8fDB8fHww" alt="Golden Retriever">
+                <div class="info">
+                    <p>Golden Retriever</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="labrador">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1527179122541-293c3b972d24?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8TGFicmFkb3J8ZW58MHx8MHx8fDA%3D" alt="Labrador">
+                <div class="info">
+                    <p>Labrador</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="pomeranian">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1719177518229-79d47d45d49a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UG9tZXJhbmlhbnxlbnwwfHwwfHx8MA%3D%3D" alt="Pomeranian">
+                <div class="info">
+                    <p>Pomeranian</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="poodle">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1609011744915-85acb5dfdbb3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UG9vZGxlfGVufDB8fDB8fHww" alt="Poodle">
+                <div class="info">
+                    <p>Poodle</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="rottweiler">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1664299515462-0b750e642e7d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Um90dHdlaWxlcnxlbnwwfHwwfHx8MA%3D%3D alt="Rottweiler">
+                <div class="info">
+                    <p>Rottweiler</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="schnauzer">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1661963197975-bb2c1b1baeaf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2NobmF1emVyfGVufDB8fDB8fHww" alt="Schnauzer">
+                <div class="info">
+                    <p>Schnauzer</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="terrier">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1664299460362-5ee717ad2e81?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8VGVycmllcnxlbnwwfHwwfHx8MA%3D%3D" alt="Terrier">
+                <div class="info">
+                    <p>Terrier</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="vizsla">
+            <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1661962674703-dc21e8d3658a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Vml6c2xhfGVufDB8fDB8fHww" alt="Vizsla">
+                <div class="info">
+                    <p>Vizsla</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="whippet">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1528797890300-0787fd964724?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8V2hpcHBldHxlbnwwfHwwfHx8MA%3D%3D" alt="Whippet">
+                <div class="info">
+                    <p>Whippet</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 dog-breed" data-breed="yorkshireterrier">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1520952631428-33319baa88eb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8WW9ya3NoaXJlJTIwVGVycmllcnxlbnwwfHwwfHx8MA%3D%3D" alt="Yorkshire Terrier">
+                <div class="info">
+                    <p>Yorkshire Terrier</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function filterBreeds() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const breeds = document.querySelectorAll('.dog-breed');
+
+        breeds.forEach(breed => {
+            const breedName = breed.getAttribute('data-breed').toLowerCase();
+            if (breedName.includes(input)) {
+                breed.style.display = 'block'; // Show the breed card
+            } else {
+                breed.style.display = 'none'; // Hide the breed card
+            }
+        });
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
