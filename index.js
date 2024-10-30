@@ -20,7 +20,7 @@ const db = mongoose.connection;
 db.once("open", () => console.log("MongoDB connection successful"));
 
 const userSchema = new mongoose.Schema({
-  name: String,
+  breed: String, // This will hold the breed name
   age: Number,
   address: String,
   email: String,
@@ -46,17 +46,40 @@ app.delete("/data/:id", async (req, res) => {
   try {
     await Users.findByIdAndDelete(req.params.id);
     res.json({ message: "User deleted successfully" });
-    
   } catch (error) {
     res.status(500).json({ error: "Error deleting user" });
   }
 });
 
+// Handle form submission
 app.post("/post", async (req, res) => {
-  const { name, age, address, email } = req.body;
-  const user = new Users({ name, age, address, email });
-  await user.save();
-  res.send(`<script>alert("Form submitted successfully!"); window.location.href = "/";</script>`);
+  console.log(req.body); // Log the incoming request body for debugging
+  const { breed, age, address, email } = req.body; // `name` should hold the breed now
+
+  // Server-side validation
+  
+
+  if (isNaN(age) || age <= 0) {
+   // return res.send(`<script>alert("Please enter a valid age."); window.location.href = "/";</script>`);
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    //return res.send(`<script>alert("Please enter a valid email address."); window.location.href = "/";</script>`);
+  }
+
+  // Create a new user instance
+  const user = new Users({ breed, age, address, email }); // Here `name` is the breed name
+
+  try {
+    // Save the user to the database
+    await user.save();
+    res.send(`<script>alert("Form submitted successfully!"); window.location.href = "/";</script>`);
+  } catch (error) {
+    // Handle any errors that occur during saving
+    console.error(error);
+    res.send(`<script>alert("An error occurred while submitting the form. Please try again."); window.location.href = "/";</script>`);
+  }
 });
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

@@ -136,55 +136,77 @@
 
 <!-- add your favourite breed //onsubmit="return validateForm()"-->
     <div class="container">
-    <form>
-        <h2 class="mt-5 mb-5">Submit your Favourite Breed</h2>
-        <h3 class="mb-5">
-            We have a range of dogs available for adoption. Please submit the form, and we will contact you.
-        </h3>
-        <div class="mb-5">
-            <div class="row">
-                <div class="form-group col-md-6 mb-3">
-                    <label for="name">Dog Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name" />
-                </div>
-                <div class="form-group col-md-6 mb-3">
-                    <label for="age">Age</label>
-                    <input type="number" class="form-control" id="age" placeholder="Enter Age" />
-                </div>
-                <div class="form-group col-md-6 mb-3">
-                    <label for="address">Location</label>
-                    <input type="text" class="form-control" id="address" placeholder="Enter Address" />
-                </div>
-                <div class="form-group col-md-6 mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter Email" />
-                </div>
-                <div class="col-lg-12 mt-5">
-                    <button type="button" class="btn btn-success" id="Submit" onclick="AddData()">Add Data</button>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div class="row mt-5">
-            <div class="col-12">
-                <h2>The list of DOGs requested for Adoption</h2>
-                <table class="table table-bordered" id="crudTable">
-                    <thead>
-                        <tr>
-                            <th id="nameHeader">Dog Name</th>
-                            <th id="ageHeader">Age</th>
-                            <th id="addressHeader">Location</th>
-                            <th id="emailHeader">Email</th>
-                            <th id="actionsHeader">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-    </form>
-</div>
+        <form action="/post" method="post" onsubmit="return validateForm()">
+      <h2 class="mt-5 mb-5">Submit your Favourite Breed</h2>
+      <h3 class = "mb-5"> We Have range of dogs avaiable for adoption, please submit the form,we will contact you</h3>
+      <div class="mb-5">
+        <div class="row">
+          <div class="form-group col-md-6 mb-3">
 
+            <label for="breed">Dog Name</label>
+             <select name="breed" class="form-control" id="breed" >
+                    <option value="" disabled selected>Select a breed</option>
+            <!-- Options will be populated dynamically -->
+          </select>
+          </div>
+          <div class="form-group col-md-6 mb-3">
+            <label for="age">Age</label>
+            <input 
+              type="number"
+              name="age"
+              class="form-control"
+              id="age"
+              placeholder="Enter Age"
+            />
+          </div>
+          <div class="form-group col-md-6 mb-3">
+            <label for="address">Location</label>
+            <input
+              type="text"
+              name="address"
+              class="form-control"
+              id="address"
+              placeholder="Enter Address"
+            />
+          </div>
+          <div class="form-group col-md-6 mb-3">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div class="col-lg-12 mt-5">
+            <button class="btn btn-success" id="Submit" onclick="AddData()">
+              Add Data
+            </button>
+            <!--<button class="btn btn-primary" id="Update">Update</button>-->
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row mt-5">
+        <div class="col-12">
+            <h2> The list of DOGs requested for Adoption</h2>
+          <table class="table table-bordered" id="crudTable">
+            <thead>
+              <tr>
+                <th>DogName</th>
+                <th>Age</th>
+                <th>Location</th>
+                <!--<th>Email</th>-->
+                <!--<th>Actions</th>-->
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        </form>
+      </div>
+    </div>
     <!-- testimonials -->
     <section class="testimonials">
         <div class="container">

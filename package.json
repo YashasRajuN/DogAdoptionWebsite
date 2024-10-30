@@ -1,13 +1,14 @@
 {
   "name": "dogbreed",
   "version": "1.0.0",
-  "description": "a dog adooption website",
-  "main": "index.js ",
-  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "type":"module",
   "scripts": {
     "start": ""
   },
-  "author": "yashas",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.3",
