@@ -27,8 +27,8 @@ A web application for adopting dogs. Users can submit their information and view
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/dog-adoption-app.git
-   cd dog-adoption-app
+   git clone https://github.com/YashasRajuN/DogAdoptionWebsite.git
+   cd DogAdoptionWebsite
    npm install
 
 Usage
@@ -40,6 +40,7 @@ bash
 npm start
 
 Visit http://localhost:3019 or "https://dogadoptionwebsite.onrender.com" in your browser.
+I have added reference for using mongodb compass as well as atlass, use whichever is convinient.
 API Reference
 
     GET /data: Fetch user data.
